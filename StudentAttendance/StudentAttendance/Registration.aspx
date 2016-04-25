@@ -27,7 +27,7 @@
             <tr>
                 <td class="auto-style3">Username:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="userBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="userBox" runat="server" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="userBox" ErrorMessage="Please enter a username." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
@@ -35,7 +35,7 @@
             <tr>
                 <td class="auto-style3">Email:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="emailBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="emailBox" runat="server" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="emailBox" ErrorMessage="Please enter an email address." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
@@ -43,7 +43,7 @@
             <tr>
                 <td class="auto-style3">Password:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="pwBox" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="pwBox" runat="server" TextMode="Password" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="pwBox" ErrorMessage="Please enter a password." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
@@ -51,7 +51,7 @@
             <tr>
                 <td class="auto-style3">Confirm Password:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="pwconfirmBox" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="pwconfirmBox" runat="server" TextMode="Password" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="pwconfirmBox" ErrorMessage="Please confirm password." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
