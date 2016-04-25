@@ -17,7 +17,7 @@
             text-align: right;
         }
         .auto-style4 {
-            width: 334px;
+            width: 481px;
         }
     </style>
 </head>
@@ -43,7 +43,7 @@
             <tr>
                 <td class="auto-style3">Password:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="pwBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="pwBox" runat="server" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="pwBox" ErrorMessage="Please enter a password." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
@@ -51,7 +51,7 @@
             <tr>
                 <td class="auto-style3">Confirm Password:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="pwconfirmBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="pwconfirmBox" runat="server" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="pwconfirmBox" ErrorMessage="Please confirm password." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
@@ -59,7 +59,7 @@
             <tr>
                 <td class="auto-style2">
                     <asp:Button ID="registerButton" runat="server" Text="Register" />
-                </td>
+                    <input id="Reset1" type="reset" value="Reset" /></td>
                 <td class="auto-style4">
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="emailBox" ErrorMessage="Please enter a valid email address." ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </td>
@@ -67,7 +67,9 @@
             </tr>
             <tr>
                 <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="pwBox" ControlToValidate="pwconfirmBox" ErrorMessage="Passwords must match. " ForeColor="#FF3300"></asp:CompareValidator>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
