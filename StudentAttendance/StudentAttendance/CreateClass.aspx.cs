@@ -43,6 +43,18 @@ namespace StudentAttendance
             }
         }
 
+
+        protected void homeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Students.aspx");
+        }
+
+        protected void logoutButton_Click(object sender, EventArgs e)
+        {
+            Session["New"] = null;
+            Response.Redirect("Login.aspx");
+        }
+
         protected void classButton_Click(object sender, EventArgs e)
         {
             try

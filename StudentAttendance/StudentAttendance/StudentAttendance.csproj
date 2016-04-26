@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AttendanceEntry.aspx" />
+    <Content Include="AttendanceView.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="CreateStudent.aspx" />
@@ -94,6 +96,20 @@
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceEntry.aspx.cs">
+      <DependentUpon>AttendanceEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttendanceEntry.aspx.designer.cs">
+      <DependentUpon>AttendanceEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceView.aspx.cs">
+      <DependentUpon>AttendanceView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttendanceView.aspx.designer.cs">
+      <DependentUpon>AttendanceView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -37,5 +37,15 @@ namespace StudentAttendance
         {
             Response.Redirect("CreateStudent.aspx");
         }
+
+        protected void enterAttendButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AttendanceEntry.aspx");
+        }
+
+        protected void viewAttendButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AttendanceView.aspx");
+        }
     }
 }
