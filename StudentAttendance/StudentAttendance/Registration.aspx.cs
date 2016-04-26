@@ -51,9 +51,9 @@ namespace StudentAttendance
 
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
 
-                conn.Open();
-
                 string insertQuery = "insert into Registration (teacherID,Username,Email,Password) values (@teacherID, @username, @email, @password)";
+
+                conn.Open();
 
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
@@ -64,12 +64,14 @@ namespace StudentAttendance
 
                 com.ExecuteNonQuery();
 
+                Response.Redirect("Login.aspx");
+                
                 conn.Close();
 
-                Response.Redirect("Login.aspx");
+                
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 Response.Write("Error: " + ex.ToString());
             }
