@@ -48,7 +48,7 @@ namespace StudentAttendance
             try
             {
 
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
 
             string insertQuery = "insert into Courses (courseName) values (@courseName)";
 
@@ -58,13 +58,15 @@ namespace StudentAttendance
 
             com.Parameters.AddWithValue("@courseName", classBox.Text);
 
+            com.ExecuteNonQuery();
+
             Response.Write("You have successfully created a new class!");
 
             conn.Close();
 
+            GridView1.DataBind();
 
-
-        }
+            }
             catch (SqlException ex)
             {
                 Response.Write("Error: " + ex.ToString());

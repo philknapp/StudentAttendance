@@ -17,6 +17,7 @@ namespace StudentAttendance
             
         }
 
+
         protected void studentButton_Click(object sender, EventArgs e)
         {
             try
@@ -31,12 +32,15 @@ namespace StudentAttendance
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
                 com.Parameters.AddWithValue("@firstName", firstBox.Text);
-                com.Parameters.AddWithValue("@lastName", firstBox.Text);
+                com.Parameters.AddWithValue("@lastName", lastBox.Text);
+
+                com.ExecuteNonQuery();
 
                 Response.Write("You have successfully created a new student!");
 
                 conn.Close();
 
+                GridView1.DataBind();
 
 
             }

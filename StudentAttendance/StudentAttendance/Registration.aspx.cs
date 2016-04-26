@@ -62,7 +62,7 @@ namespace StudentAttendance
                 com.Parameters.AddWithValue("@email", emailBox.Text);
                 com.Parameters.AddWithValue("@password", pwBox.Text);
 
-                int affectedlines = com.ExecuteNonQuery();
+                com.ExecuteNonQuery();
 
                 Response.Redirect("Login.aspx");
                 
