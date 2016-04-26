@@ -19,7 +19,7 @@
         <asp:LinkButton ID="regClassButton" runat="server">Register a new class</asp:LinkButton>
         <br />
         <br />
-        <asp:LinkButton ID="enterAttendButton" runat="server" OnClick="LinkButton1_Click">Submit Attendance</asp:LinkButton>
+        <asp:LinkButton ID="enterAttendButton" runat="server">Submit Attendance</asp:LinkButton>
         <br />
         <br />
         <asp:LinkButton ID="viewAttendButton" runat="server">View Attendance</asp:LinkButton>
