@@ -13,10 +13,10 @@
         <asp:Label ID="welcomeLabel" runat="server" Text="Welcome "></asp:Label>
         <br />
         <br />
-        <asp:LinkButton ID="stuRegButton" runat="server">Register a new student</asp:LinkButton>
+        <asp:LinkButton ID="stuRegButton" runat="server" OnClick="stuRegButton_Click">Register a new student</asp:LinkButton>
         <br />
         <br />
-        <asp:LinkButton ID="regClassButton" runat="server">Register a new class</asp:LinkButton>
+        <asp:LinkButton ID="regClassButton" runat="server" OnClick="regClassButton_Click">Register a new class</asp:LinkButton>
         <br />
         <br />
         <asp:LinkButton ID="enterAttendButton" runat="server">Submit Attendance</asp:LinkButton>

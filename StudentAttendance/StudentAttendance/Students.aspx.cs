@@ -27,5 +27,15 @@ namespace StudentAttendance
             Response.Redirect("Login.aspx");
 
         }
+
+        protected void regClassButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CreateClass.aspx");
+        }
+
+        protected void stuRegButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CreateStudent.aspx");
+        }
     }
 }
