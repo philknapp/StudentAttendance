@@ -59,7 +59,7 @@ namespace StudentAttendance
 
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void registerButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("Registration.aspx");
         }

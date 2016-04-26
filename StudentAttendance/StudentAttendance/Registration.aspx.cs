@@ -53,7 +53,7 @@ namespace StudentAttendance
 
                 conn.Open();
 
-                string insertQuery = "insert into Registration (teacherID, Username,Email,Password) values (@teacherID, @username , @email , @password)  ";
+                string insertQuery = "insert into Registration (teacherID,Username,Email,Password) values (@teacherID, @username, @email, @password)";
 
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
@@ -63,10 +63,11 @@ namespace StudentAttendance
                 com.Parameters.AddWithValue("@password", pwBox.Text);
 
                 com.ExecuteNonQuery();
-                Response.Redirect("Admin.aspx");
-                Response.Write("You have successfully registered your account!");
 
                 conn.Close();
+
+                Response.Redirect("Login.aspx");
+
             }
             catch (Exception ex)
             {

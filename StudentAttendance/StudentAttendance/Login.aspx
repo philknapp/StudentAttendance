@@ -44,7 +44,7 @@
                 <td class="auto-style5">Username</td>
                 <td class="auto-style9">
                     <asp:TextBox ID="usernameBox" runat="server" Width="180px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="usernameBox" ErrorMessage="Please enter a username." ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="usernameBox" ErrorMessage="Please enter a username." ForeColor="#FF3300" ValidationGroup="loginVal"></asp:RequiredFieldValidator>
                 </td>
                 
             </tr>
@@ -52,16 +52,16 @@
                 <td class="auto-style6">Password</td>
                 <td class="auto-style8">
                     <asp:TextBox ID="passwordBox" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="passwordBox" ErrorMessage="Please enter a password. " ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="passwordBox" ErrorMessage="Please enter a password. " ForeColor="#FF3300" ValidationGroup="loginVal"></asp:RequiredFieldValidator>
                 </td>
                
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style9">
-                    <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Login" />
+                    <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Login" ValidationGroup="loginVal" />
                     <br />
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+                    <asp:LinkButton ID="registerButton" runat="server" OnClick="registerButton_Click">Register</asp:LinkButton>
                 </td>
                 
             </tr>
