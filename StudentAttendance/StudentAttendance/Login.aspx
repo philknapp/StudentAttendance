@@ -9,9 +9,6 @@
         .auto-style1 {
             text-align: center;
         }
-        .auto-style2 {
-            width: 100%;
-        }
         .auto-style3 {
             font-size: large;
         }
@@ -20,9 +17,6 @@
         }
         .auto-style6 {
             text-align: right;
-            height: 26px;
-        }
-        .auto-style7 {
             height: 26px;
         }
         .auto-style8 {
@@ -38,16 +32,21 @@
     <form id="form1" runat="server">
     <div class="auto-style1">
     
-        <strong><span class="auto-style3">Login Page</span><br class="auto-style3" />
-        </strong>
-        <table class="auto-style2">
+        <div class="auto-style9">
+    
+        <table>
+            <tr>
+                <td> 
+                    <strong><span class="auto-style3">Login Page</span></strong>
+                </td>
+            </tr>
             <tr>
                 <td class="auto-style5">Username</td>
                 <td class="auto-style9">
                     <asp:TextBox ID="usernameBox" runat="server" Width="180px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="usernameBox" ErrorMessage="Please enter a username." ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
-                <td>&nbsp;</td>
+                
             </tr>
             <tr>
                 <td class="auto-style6">Password</td>
@@ -55,20 +54,18 @@
                     <asp:TextBox ID="passwordBox" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="passwordBox" ErrorMessage="Please enter a password. " ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style7"></td>
+               
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style9">
                     <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Login" />
+                    <br />
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
                 </td>
-                <td>&nbsp;</td>
+                
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
+
         </table>
     
     </div>

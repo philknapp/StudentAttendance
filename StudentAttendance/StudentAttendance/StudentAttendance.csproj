@@ -82,6 +82,7 @@
       <DependentUpon>StudentAttendance.mdf</DependentUpon>
     </Content>
     <Content Include="Registration.aspx" />
+    <Content Include="Students.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students.aspx.cs">
+      <DependentUpon>Students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students.aspx.designer.cs">
+      <DependentUpon>Students.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

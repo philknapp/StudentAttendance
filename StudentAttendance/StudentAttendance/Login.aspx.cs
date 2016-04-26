@@ -42,8 +42,7 @@ namespace StudentAttendance
                 if(password == passwordBox.Text)
                 {
                     Session["New"] = usernameBox.Text;
-                    Response.Write("Password is correct.");
-                    Response.Redirect("Admin.aspx");
+                    Response.Redirect("Students.aspx");
                 }
                 else
                 {
@@ -58,6 +57,11 @@ namespace StudentAttendance
 
             
 
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registration.aspx");
         }
     }
 }
