@@ -58,7 +58,7 @@
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:Button ID="registerButton" runat="server" Text="Register" />
+                    <asp:Button ID="registerButton" runat="server" Text="Register"  OnClick="registerButton_Click"/>
                     <input id="Reset1" type="reset" value="Reset" /></td>
                 <td class="auto-style4">
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="emailBox" ErrorMessage="Please enter a valid email address." ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>

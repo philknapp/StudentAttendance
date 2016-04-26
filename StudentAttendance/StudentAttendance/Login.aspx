@@ -57,13 +57,17 @@
                
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:LinkButton ID="registerButton" runat="server" OnClick="registerButton_Click">Register</asp:LinkButton>
+                </td>
                 <td class="auto-style9">
                     <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Login" ValidationGroup="loginVal" />
                     <br />
-                    <asp:LinkButton ID="registerButton" runat="server" OnClick="registerButton_Click">Register</asp:LinkButton>
                 </td>
                 
+            </tr>
+            <tr>
+                <td><asp:LinkButton ID="adminLinkButton" runat="server" OnClick="adminLinkButton_Click">Admin Page</asp:LinkButton></td>
             </tr>
 
         </table>

@@ -58,6 +58,15 @@ namespace StudentAttendance {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
+        /// registerButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton registerButton;
+        
+        /// <summary>
         /// loginButton control.
         /// </summary>
         /// <remarks>
@@ -67,12 +76,12 @@ namespace StudentAttendance {
         protected global::System.Web.UI.WebControls.Button loginButton;
         
         /// <summary>
-        /// registerButton control.
+        /// adminLinkButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton registerButton;
+        protected global::System.Web.UI.WebControls.LinkButton adminLinkButton;
     }
 }

@@ -47,22 +47,22 @@ namespace StudentAttendance
         protected void registerButton_Click(object sender, EventArgs e)
         {
             try {
-                Guid newGuid = Guid.NewGuid();
+                
 
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
 
-                string insertQuery = "insert into Registration (teacherID,Username,Email,Password) values (@teacherID, @username, @email, @password)";
+                string insertQuery = "insert into Registration (Username,Email,Password) values (@username, @email, @password)";
 
                 conn.Open();
 
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
-                com.Parameters.AddWithValue("@teacherID", newGuid.ToString());
+                
                 com.Parameters.AddWithValue("@Username",userBox.Text);
                 com.Parameters.AddWithValue("@email", emailBox.Text);
                 com.Parameters.AddWithValue("@password", pwBox.Text);
 
-                com.ExecuteNonQuery();
+                int affectedlines = com.ExecuteNonQuery();
 
                 Response.Redirect("Login.aspx");
                 

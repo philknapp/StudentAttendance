@@ -63,5 +63,10 @@ namespace StudentAttendance
         {
             Response.Redirect("Registration.aspx");
         }
+
+        protected void adminLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Admin.aspx");
+        }
     }
 }
