@@ -48,7 +48,7 @@ namespace StudentAttendance
                 int foundDate = (Int32)findDate.ExecuteScalar();
                 
 
-                if (foundClass == 0 && foundDate == 0)
+                if (foundClass == 0 | foundDate == 0)
                 {
                     string insertQuery = "insert into CourseSession (courseID, courseDate) values (@courseID, @courseDate)";
                     SqlCommand com = new SqlCommand(insertQuery, conn);
@@ -80,7 +80,7 @@ namespace StudentAttendance
                 int foundDateAttendance = (Int32)findDate.ExecuteScalar();
                     
 
-                if (foundStudent == 0 || foundClassAttendance == 0 || foundDateAttendance == 0)
+                if (foundStudent == 0 & foundClassAttendance == 0 & foundDateAttendance == 0)
                 {
                     string insertQuery2 = "insert into CourseAttendance (courseID, courseDate, studentID) values (@courseID, @courseDate, @studentID)";
                     SqlCommand com2 = new SqlCommand(insertQuery2, conn);
@@ -91,13 +91,13 @@ namespace StudentAttendance
 
                     com2.ExecuteNonQuery();
 
-                    Response.Write("You have successfully created a new attendance entry for  " + studentDropDown.SelectedItem + " On " + Calendar1.SelectedDate);
+                    Response.Write("  You have successfully created a new attendance entry for  " + studentDropDown.SelectedItem + " On " + Calendar1.SelectedDate);
 
                 }
 
                 else
                 {
-                    Response.Write("Attendance entry for this Student already exists for this date");
+                    Response.Write("  Attendance entry for this Student already exists for this date");
                 }
                 
                 conn.Close();
@@ -132,19 +132,20 @@ namespace StudentAttendance
                 findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
                 int foundDateAttendance = (Int32)findDateAttendance.ExecuteScalar();
 
-                if (foundStudent == 1 && foundClassAttendance == 1 && foundDateAttendance == 1)
+                if (foundStudent == 1 & foundClassAttendance == 1 & foundDateAttendance == 1)
                 {
-                    string deleteAttendance = "Delete FROM CourseAttendance WHERE studentID = @student AND courseID = @course AND courseDate = @Date";
+                    string deleteAttendance = "  Delete FROM CourseAttendance WHERE studentID = @student AND courseID = @course AND courseDate = @Date";
                     SqlCommand deleteAttendanceEntry = new SqlCommand(deleteAttendance, conn);
                     deleteAttendanceEntry.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
                     deleteAttendanceEntry.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
                     deleteAttendanceEntry.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
                     deleteAttendanceEntry.ExecuteNonQuery();
+                    Response.Write("  Deleted entry.");
 
                 }
                 else
                 {
-                    Response.Write("No entry to delete.");
+                    Response.Write("  No entry to delete.");
                 }
             }
 
