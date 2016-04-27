@@ -61,26 +61,23 @@ namespace StudentAttendance
                     Response.Write("You have successfully created a new session!");
 
                 }
+                   
+                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course";
+                SqlCommand findClassAttendance = new SqlCommand(countClassAttendance, conn);
+                findClassAttendance.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
+                int foundClassAttendance = (Int32)findClassAttendance.ExecuteScalar();              
+
+                string countCourseDateAttendance = "SELECT COUNT(*) FROM CourseAttendance WHERE courseDate = @Date";
+                SqlCommand findDateAttendance = new SqlCommand(countCourseDateAttendance, conn);
+                findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
+                int foundDateAttendance = (Int32)findDateAttendance.ExecuteScalar();
 
                 string studentQuery = "Select COUNT(*) from CourseAttendance WHERE studentID = @student";
                 SqlCommand findStudent = new SqlCommand(studentQuery, conn);
                 findStudent.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
                 int foundStudent = (Int32)findStudent.ExecuteScalar();
-                    
 
-                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course";
-                SqlCommand findClassAttendance = new SqlCommand(countClassAttendance, conn);
-                findClassAttendance.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
-                int foundClassAttendance = (Int32)findClass.ExecuteScalar();
-                    
-
-                string countCourseDateAttendance = "SELECT COUNT(*) FROM CourseAttendance WHERE courseDate = @Date";
-                SqlCommand findDateAttendance = new SqlCommand(countCourseDateAttendance, conn);
-                findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
-                int foundDateAttendance = (Int32)findDate.ExecuteScalar();
-                    
-
-                if (foundStudent == 0 & foundClassAttendance == 0 & foundDateAttendance == 0)
+                if (foundClassAttendance == 0 | foundDateAttendance == 0 | foundStudent == 0)
                 {
                     string insertQuery2 = "insert into CourseAttendance (courseID, courseDate, studentID) values (@courseID, @courseDate, @studentID)";
                     SqlCommand com2 = new SqlCommand(insertQuery2, conn);
@@ -117,11 +114,6 @@ namespace StudentAttendance
             {
                 conn.Open();
 
-                string studentQuery = "Select COUNT(*) from CourseAttendance WHERE studentID = @student";
-                SqlCommand findStudent = new SqlCommand(studentQuery, conn);
-                findStudent.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
-                int foundStudent = (Int32)findStudent.ExecuteScalar();
-
                 string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course";
                 SqlCommand findClassAttendance = new SqlCommand(countClassAttendance, conn);
                 findClassAttendance.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
@@ -132,7 +124,12 @@ namespace StudentAttendance
                 findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
                 int foundDateAttendance = (Int32)findDateAttendance.ExecuteScalar();
 
-                if (foundStudent == 1 & foundClassAttendance == 1 & foundDateAttendance == 1)
+                string studentQuery = "Select COUNT(*) from CourseAttendance WHERE studentID = @student";
+                SqlCommand findStudent = new SqlCommand(studentQuery, conn);
+                findStudent.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
+                int foundStudent = (Int32)findStudent.ExecuteScalar();
+
+                if (foundStudent > 0 & foundClassAttendance > 0 & foundDateAttendance > 0)
                 {
                     string deleteAttendance = "  Delete FROM CourseAttendance WHERE studentID = @student AND courseID = @course AND courseDate = @Date";
                     SqlCommand deleteAttendanceEntry = new SqlCommand(deleteAttendance, conn);
