@@ -14,6 +14,15 @@ namespace StudentAttendance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["New"] != null)
+            {
+                Response.Write("Welcome to Attendance Explorer!  ");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (IsPostBack)
             {
                 try

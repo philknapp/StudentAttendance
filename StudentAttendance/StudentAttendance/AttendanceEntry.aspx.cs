@@ -14,7 +14,14 @@ namespace StudentAttendance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["New"] != null)
+            {
+                Response.Write("Welcome to Attendance Explorer!  ");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void homeButton_Click(object sender, EventArgs e)
@@ -36,19 +43,13 @@ namespace StudentAttendance
             {
                 conn.Open();
 
-                string countClass = "Select COUNT(*) from CourseSession WHERE courseID = @course";
-                SqlCommand findClass = new SqlCommand(countClass, conn);
-                findClass.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
-                int foundClass = (Int32)findClass.ExecuteScalar();
-                
+                string sessionQuery = "Select COUNT(*) from CourseSession WHERE courseID = @course and courseDate = @Date";
+                SqlCommand findSession = new SqlCommand(sessionQuery, conn);
+                findSession.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
+                findSession.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
+                int foundSession = (Int32)findSession.ExecuteScalar();       
 
-                string countCourseDate = "SELECT COUNT(*) FROM CourseSession WHERE courseDate = @Date";
-                SqlCommand findDate = new SqlCommand(countCourseDate, conn);
-                findDate.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
-                int foundDate = (Int32)findDate.ExecuteScalar();
-                
-
-                if (foundClass == 0 | foundDate == 0)
+                if (foundSession == 0)
                 {
                     string insertQuery = "insert into CourseSession (courseID, courseDate) values (@courseID, @courseDate)";
                     SqlCommand com = new SqlCommand(insertQuery, conn);
@@ -62,22 +63,15 @@ namespace StudentAttendance
 
                 }
                    
-                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course";
+                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course and courseDate = @Date and studentID = @student";
                 SqlCommand findClassAttendance = new SqlCommand(countClassAttendance, conn);
                 findClassAttendance.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
+                findClassAttendance.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
+                findClassAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
                 int foundClassAttendance = (Int32)findClassAttendance.ExecuteScalar();              
 
-                string countCourseDateAttendance = "SELECT COUNT(*) FROM CourseAttendance WHERE courseDate = @Date";
-                SqlCommand findDateAttendance = new SqlCommand(countCourseDateAttendance, conn);
-                findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
-                int foundDateAttendance = (Int32)findDateAttendance.ExecuteScalar();
 
-                string studentQuery = "Select COUNT(*) from CourseAttendance WHERE studentID = @student";
-                SqlCommand findStudent = new SqlCommand(studentQuery, conn);
-                findStudent.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
-                int foundStudent = (Int32)findStudent.ExecuteScalar();
-
-                if (foundClassAttendance == 0 | foundDateAttendance == 0 | foundStudent == 0)
+                if (foundClassAttendance == 0)
                 {
                     string insertQuery2 = "insert into CourseAttendance (courseID, courseDate, studentID) values (@courseID, @courseDate, @studentID)";
                     SqlCommand com2 = new SqlCommand(insertQuery2, conn);
@@ -114,22 +108,14 @@ namespace StudentAttendance
             {
                 conn.Open();
 
-                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course";
+                string countClassAttendance = "Select COUNT(*) from CourseAttendance WHERE courseID = @course and courseDate = @Date and studentID = @student";
                 SqlCommand findClassAttendance = new SqlCommand(countClassAttendance, conn);
                 findClassAttendance.Parameters.AddWithValue("@course", classDropDown.SelectedValue);
+                findClassAttendance.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
+                findClassAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
                 int foundClassAttendance = (Int32)findClassAttendance.ExecuteScalar();
 
-                string countCourseDateAttendance = "SELECT COUNT(*) FROM CourseAttendance WHERE courseDate = @Date";
-                SqlCommand findDateAttendance = new SqlCommand(countCourseDateAttendance, conn);
-                findDateAttendance.Parameters.AddWithValue("@Date", SqlDbType.DateTime).Value = Calendar1.SelectedDate;
-                int foundDateAttendance = (Int32)findDateAttendance.ExecuteScalar();
-
-                string studentQuery = "Select COUNT(*) from CourseAttendance WHERE studentID = @student";
-                SqlCommand findStudent = new SqlCommand(studentQuery, conn);
-                findStudent.Parameters.AddWithValue("@student", studentDropDown.SelectedValue);
-                int foundStudent = (Int32)findStudent.ExecuteScalar();
-
-                if (foundStudent > 0 & foundClassAttendance > 0 & foundDateAttendance > 0)
+                if (foundClassAttendance > 0)
                 {
                     string deleteAttendance = "  Delete FROM CourseAttendance WHERE studentID = @student AND courseID = @course AND courseDate = @Date";
                     SqlCommand deleteAttendanceEntry = new SqlCommand(deleteAttendance, conn);

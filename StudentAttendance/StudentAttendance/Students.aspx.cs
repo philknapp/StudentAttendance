@@ -13,7 +13,7 @@ namespace StudentAttendance
         {
             if(Session["New"] != null)
             {
-                welcomeLabel.Text += Session["New"].ToString();
+                Response.Write("Welcome to Attendance Explorer!  ");
             }
             else
             {
